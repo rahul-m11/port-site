@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. Rahul - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #000;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 25px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            color: #ccc;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card-content {
+            color: #fff;
+        }
+
+        .card-content h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #fff;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .skill-category h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: #ccc;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #fff;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .project-duration {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .view-details {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .view-details:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .education-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .education-title {
+            font-size: 1.3em;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            color: #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .certification-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .certification-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+        }
+
+        .activities-list {
+            list-style: none;
+            color: #ccc;
+        }
+
+        .activities-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .activities-list li::before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+
+        /* Project Detail Pages */
+        .project-detail {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .project-detail.active {
+            display: block;
+        }
+
+        .project-detail-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .project-detail h2 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .project-detail h3 {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .project-detail p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .project-detail ul {
+            color: #ccc;
+            margin-left: 20px;
+        }
+
+        .project-detail li {
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .education-details {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .project-detail-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>M. RAHUL</h1>
+            <p class="subtitle">PASSIONATE, FOCUSED LEARNER</p>
+            <div class="contact-info">
+                <a href="https://github.com/rahul-m11" class="contact-item" target="_blank">GitHub</a>
+                <a href="mailto:rahul11085x@gmail.com" class="contact-item">rahul11085x@gmail.com</a>
+                <a href="tel:8610613739" class="contact-item">8610613739</a>
+                <a href="https://leetcode.com/u/RAHUL_110855/" class="contact-item" target="_blank">LeetCode</a>
+            </div>
+        </div>
+
+        <!-- Career Objective -->
+        <div class="glass-card">
+            <h2 class="section-title">Career Objective</h2>
+            <div class="card-content">
+                <p>Motivated and detail-oriented Information Technology student with a passion for software development, problem-solving, and emerging technologies. Eager to apply theoretical knowledge to real-world projects and gain hands-on experience in software engineering, web development, and data analytics.</p>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="glass-card">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming</h4>
+                    <ul class="skill-list">
+                        <li>Python (Beginner)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Web Development</h4>
+                    <ul class="skill-list">
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>React.js (Learning)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Database</h4>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>MongoDB (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>DevOps Tools</h4>
+                    <ul class="skill-list">
+                        <li>Git, GitHub</li>
+                        <li>VS Code</li>
+                        <li>GitHub Actions (Learning)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Operating Systems</h4>
+                    <ul class="skill-list">
+                        <li>Windows</li>
+                        <li>Linux (Basic Commands)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <ul class="skill-list">
+                        <li>English</li>
+                        <li>Tamil</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="glass-card">
+            <h2 class="section-title">Projects</h2>
+            <div class="card-content">
+                <div class="project-card" onclick="openProjectDetail('project1')">
+                    <h3 class="project-title">Effortless Access: IoT Based Facial Recognition for E-bike</h3>
+                    <p class="project-duration">SEP 2024 - DEC 2025</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">IoT</span>
+                        <span class="tech-tag">Facial Recognition</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                    <p class="project-description">
+                        IoT-enabled facial recognition system for secure, keyless entry to e-bikes with enhanced user convenience and safety features.
+                    </p>
+                    <a href="#" class="view-details" onclick="event.stopPropagation(); openProjectDetail('project1')">View Details →</a>
+                </div>
+                <div class="project-card" onclick="openProjectDetail('project2')">
+                    <h3 class="project-title">Second Hand Bikes: Buy and Sell App</h3>
+                    <p class="project-duration">SEP 2023 - DEC 2024</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Low-Code</span>
+                        <span class="tech-tag">Mobile App</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">UI/UX</span>
+                    </div>
+                    <p class="project-description">
+                        User-friendly marketplace app developed using low-code tools to simplify buying and selling of second-hand bikes.
+                    </p>
+                    <a href="#" class="view-details" onclick="event.stopPropagation(); openProjectDetail('project2')">View Details →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="glass-card">
+            <h2 class="section-title">Education</h2>
+            <div class="card-content">
+                <div class="education-item">
+                    <h3 class="education-title">B.Tech Information Technology</h3>
+                    <div class="education-details">
+                        <span>SNS College of Engineering</span>
+                        <span>CGPA: 8.04</span>
+                        <span>2023-2027</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <h3 class="education-title">HSE (Higher Secondary Education)</h3>
+                    <div class="education-details">
+                        <span>Elsie Mathric Hr. Sec. School</span>
+                        <span>89%</span>
+                        <span>2022-2023</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <h3 class="education-title">SSLC (Secondary School Leaving Certificate)</h3>
+                    <div class="education-details">
+                        <span>Elsie Mat. Hr. Sec. School</span>
+                        <span>80%</span>
+                        <span>2021-2022</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="glass-card">
+            <h2 class="section-title">Courses & Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-item">
+                    <strong>Introduction to HTML</strong><br>
+                    Cursa (2025)
+                </div>
+                <div class="certification-item">
+                    <strong>Python Programming Essential</strong><br>
+                    Cursa (2025)
+                </div>
+                <div class="certification-item">
+                    <strong>Prepinsta Courses</strong><br>
+                    10+ courses completed (2023-2024)
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="glass-card">
+            <h2 class="section-title">Additional Information</h2>
+            <div class="card-content">
+                <h3>Activities & Achievements</h3>
+                <ul class="activities-list">
+                    <li>Solved 100+ problems on LeetCode</li>
+                    <li>Participated in coding contest (April 2025)</li>
+                    <li>Attended workshop on Mindful AI (March 2025)</li>
+                    <li>Gained hands-on experience with object-oriented programming concepts (April 2025)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Detail Pages -->
+    <div id="project1" class="project-detail">
+        <button class="close-btn" onclick="closeProjectDetail('project1')">&times;</button>
+        <div class="project-detail-content">
+            <h2>Effortless Access: IoT Based Facial Recognition for E-bike</h2>
+            <p><strong>Duration:</strong> September 2024 - December 2025</p>
+            
+            <h3>Project Overview</h3>
+            <p>Effortless Access is an innovative IoT-enabled facial recognition system designed to revolutionize e-bike security and user experience. The system provides secure, keyless entry by allowing only authorized users to unlock and operate the vehicle through advanced facial recognition technology.</p>
+            
+            <h3>Key Features</h3>
+            <ul>
+                <li>Advanced facial recognition using OpenCV and machine learning algorithms</li>
+                <li>Real-time user authentication and authorization</li>
+                <li>IoT connectivity for remote monitoring and control</li>
+                <li>Secure database for storing user profiles and access logs</li>
+                <li>Anti-theft protection with instant alerts</li>
+                <li>Battery-efficient design for long-term operation</li>
+            </ul>
+            
+            <h3>Technologies Used</h3>
+            <p>The project utilizes cutting-edge technologies including Python for backend processing, OpenCV for image processing and facial recognition, IoT sensors for connectivity, and a secure database system for user management. The system is designed to be robust, efficient, and user-friendly.</p>
+            
+            <h3>Impact & Benefits</h3>
+            <p>This project addresses the growing concern of vehicle security while enhancing user convenience. It eliminates the need for physical keys, reduces theft risk, and provides seamless access control for e-bike users.</p>
+        </div>
+    </div>
+
+    <div id="project2" class="project-detail">
+        <button class="close-btn" onclick="closeProjectDetail('project2')">&times;</button>
+        <div class="project-detail-content">
+            <h2>Second Hand Bikes: Buy and Sell App</h2>
+            <p><strong>Duration:</strong> September 2023 - December 2024</p>
+            
+            <h3>Project Overview</h3>
+            <p>A comprehensive marketplace application developed using low-code development tools to create a seamless platform for buying and selling second-hand bikes. The app connects buyers and sellers in an efficient, user-friendly environment.</p>
+            
+            <h3>Key Features</h3>
+            <ul>
+                <li>User registration and profile management system</li>
+                <li>Advanced search and filtering capabilities</li>
+                <li>Photo upload and gallery management</li>
+                <li>In-app messaging system for buyer-seller communication</li>
+                <li>Price comparison and market analysis tools</li>
+                <li>Location-based search and recommendations</li>
+                <li>Rating and review system for trust building</li>
+            </ul>
+            
+            <h3>Development Approach</h3>
+            <p>The application was built using low-code development platforms, allowing for rapid prototyping and deployment. This approach enabled focus on user experience and feature development while maintaining code efficiency and scalability.</p>
+            
+            <h3>User Experience</h3>
+            <p>The app features an intuitive interface designed for both tech-savvy users and beginners. Simple navigation, clear product listings, and streamlined transaction processes ensure a smooth user experience from browsing to final purchase.</p>
+            
+            <h3>Market Impact</h3>
+            <p>The platform addresses the growing demand for sustainable transportation solutions by facilitating the second-hand bike market, promoting eco-friendly practices while providing economic benefits to users.</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling animation for cards
+        const cards = document.querySelectorAll('.glass-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add interactive hover effects
+        const skillCategories = document.querySelectorAll('.skill-category');
+        skillCategories.forEach(category => {
+            category.addEventListener('mouseenter', () => {
+                category.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            category.addEventListener('mouseleave', () => {
+                category.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Project detail functions
+        function openProjectDetail(projectId) {
+            const projectDetail = document.getElementById(projectId);
+            projectDetail.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectDetail(projectId) {
+            const projectDetail = document.getElementById(projectId);
+            projectDetail.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close project detail when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('project-detail')) {
+                e.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Prevent closing when clicking inside project detail content
+        document.querySelectorAll('.project-detail-content').forEach(content => {
+            content.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.project-detail.active').forEach(detail => {
+                    detail.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
